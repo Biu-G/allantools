@@ -11,7 +11,7 @@ reader=csv.reader(csvFile)
 sz=0
 for item in reader:
     time.append(float(item[0])/1e9)
-    gx.append(float(item[2]))
+    gx.append(float(item[3]))
     sz+=1
 csvFile.close()
 
@@ -44,8 +44,10 @@ while jump<900:
         sum=0
     if ans>0:
         all/=ans
-    tau.append(ma.log10(jump))
-    div.append(ma.log10(ma.sqrt(all)))
+    tau.append(jump)
+    div.append(ma.sqrt(all))
     jump*=2
 plt.plot(tau,div)
+plt.yscale("log")
+plt.xscale("log")
 plt.show()
